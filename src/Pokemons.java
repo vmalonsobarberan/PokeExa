@@ -80,25 +80,23 @@ public class Pokemons {
             out = new PrintWriter(new FileWriter("BestPokemons.csv"));
             out.println("name,type1,type2,generation,attack,defense");
             for (int i = 0; i < numType1s; i++) {
-                Pokemon candidate = null;
-                int max = 0;
+                Pokemon best = null;
                 for (int j = 0; j < numPokemons; j++) {
                     Pokemon p = pokemons[j];
                     if (p.getType1().equalsIgnoreCase(type1s[i])) {
-                        if (candidate == null) {
-                            candidate = p;
-                            max = p.getTotal();
+                        if (best == null) {
+                            best = p;
+
                         } else {
-                            if (p.getTotal() > max) {
-                                candidate = p;
-                                max = p.getTotal();
+                            if (p.getTotal() > best.getTotal()) {
+                                best = p;
                             }
                         }
                     }
                 }
-                out.println(candidate.getName() + "," + candidate.getType1() +
-                        "," + candidate.getType2() + "," + candidate.getGeneration() +
-                        "," + candidate.getAttack() + "," + candidate.getDefense());
+                out.println(best.getName() + "," + best.getType1() +
+                        "," + best.getType2() + "," + best.getGeneration() +
+                        "," + best.getAttack() + "," + best.getDefense());
             }
 
         } finally {
