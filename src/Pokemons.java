@@ -110,16 +110,13 @@ public class Pokemons {
 
     public void displayStrongest(String type) {
         Pokemon best = null;
-        int bestAttack = 0;
         for (int i = 0; i < numPokemons; i++) {
             if (type.equalsIgnoreCase(pokemons[i].getType1())) {
                 if (best == null) {
                     best = pokemons[i];
-                    bestAttack = best.getAttack();
                 } else {
-                    if (pokemons[i].getAttack() > bestAttack) {
+                    if (pokemons[i].getAttack() > best.getAttack()) {
                         best = pokemons[i];
-                        bestAttack = best.getAttack();
                     }
                 }
             }
